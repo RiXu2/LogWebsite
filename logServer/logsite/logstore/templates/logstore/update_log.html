@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Log</title>
+</head>
+<body>
+<form action="/logstore/update_log/{{ log.id }}" method="post">
+    <p>
+        title <input type="text" value="{{ log.title }}" disabled="disabled">
+    </p>
+    <p>
+        sender_name <input type="text" value="{{ log.sender_name }}" disabled="disabled">
+    </p>
+    <p>
+        info <input type="text" name="info" value="{{ log.info }}">
+    </p>
+
+    <p>
+        <input type="submit" value="Update">
+    </p>
+
+</form>
+</body>
+</html>

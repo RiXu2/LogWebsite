@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check All Logs</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>sender</th>
+        <th>info</th>
+    </tr>
+    {% for log in all_log %}
+        <tr>
+            <td>{{log.id}}</td>
+            <td>{{log.title}}</td>
+            <td>{{log.sender_name}}</td>
+            <td>{{log.info}}</td>
+            <td>
+                <a href="/logstore/update_log/{{ log.id }}">Update</a>
+                <a href="/logstore/delete_log?log_id={{ log.id }}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

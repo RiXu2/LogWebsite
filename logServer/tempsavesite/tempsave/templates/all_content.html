@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show All files</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+<main class="container-fluid">
+<div class="container">
+    <h3>File list</h3>
+    <p> <a href="/test_upload">Upload File</a> </p>
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type for Searching" style="font-family: 'Knewave', cursive;
+    margin: 10px 0px 30px 0px;width: 100%;border: 2px solid black;box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px rgba(0, 0, 0, 0.62);letter-spacing: 2px;">
+    <table class="table table-striped" id="myTable">
+        <tbody>
+        <tr>
+            <th id="th0" onclick="SortTable(this)">title</th>
+            <th id="th1" onclick="SortTable(this)">File</th>
+            <th id="th2" onclick="SortTable(this)">Filesize</th>
+            <th id="th3" onclick="SortTable(this)">Upload Time</th>
+            <th></th>
+        </tr>
+
+        {% for content in all_content %}
+            <tr>
+                <td name="td0">{{content.title}}</td>
+                <td name="td1"><a href="/download{{ content.picture.url }}/">{{ content.picture.url }}</a></td>
+                <td name="td2">{{ content.picture.size | filesizeformat }}</td>
+                <td name="td3">{{content.Updated_time}}</td>
+                <td>
+                    <a href="/update_content/{{ content.id }}" style="margin-right: 10px">Edit</a>
+                    <a href="/delete_content?content_id={{ content.id }}" style="margin-right: 10px">Delete</a>
+                    <a href="{{ content.picture.url}}">View Online</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</main>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+    var tag=1;
+    function SortTable(obj){
+        var td0s=document.getElementsByName("td0");//得到id为td0的一串列表，下相同
+        var td1s=document.getElementsByName("td1");
+        var td2s=document.getElementsByName("td2");
+        var td3s=document.getElementsByName("td3");
+        var tdArray0=[];
+        var tdArray1=[];
+        var tdArray2=[];
+        var tdArray3=[];
+        for(var i=0;i<td0s.length;i++){
+            tdArray0.push(td0s[i].innerHTML);
+        }//每串都写到数组中
+        for(var i=0;i<td1s.length;i++){
+            tdArray1.push(td1s[i].innerHTML);
+        }
+        for(var i=0;i<td2s.length;i++){
+            tdArray2.push(td2s[i].innerHTML);
+        }
+        for(var i=0;i<td3s.length;i++){
+            tdArray3.push(td3s[i].innerHTML);
+        }
+        var tds = document.getElementsByName("td" + obj.id.substr(2, 1));
+        //得到当前传入对象的那一列
+        var columnArray=[];
+        for(var i=0;i<tds.length;i++){
+            columnArray.push(tds[i].innerHTML);
+        }//当前那一列都写入column这个栈，是逆序的
+        var orginArray=[];
+        for(var i=0;i<columnArray.length;i++){
+            orginArray.push(columnArray[i]);
+        }//将这一列的内容再存储一遍，一会原来列表修改以后，
+        //通过比对值的方式对应到当前行的内容，实现同行内容一起修改
+        columnArray.sort();   //排序后的新值，只排序了当前列
+        for(var i=0;i<columnArray.length;i++){
+            for(var j=0;j<orginArray.length;j++){
+                if(orginArray[j]==columnArray[i]){
+                    document.getElementsByName("td0")[i].innerHTML=tdArray0[j];
+                    document.getElementsByName("td1")[i].innerHTML=tdArray1[j];
+                    document.getElementsByName("td2")[i].innerHTML=tdArray2[j];
+                    document.getElementsByName("td3")[i].innerHTML=tdArray3[j];
+                    orginArray[j]=null;
+                    break;
+                }
+            }
+        }
+    }
+
+    function myFunction() {
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // 循环表格每一行，查找匹配项
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+</script>

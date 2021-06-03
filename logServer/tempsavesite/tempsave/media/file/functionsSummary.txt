@@ -1,0 +1,73 @@
+
+
+love.load()  	initializing the game state 
+love.update(dt) called each frame by LOVE 
+love.draw() 	call each frame and draw
+love.graphics.printf(text, x,y,[width],[adjacent])  write on screen
+love.window.setMode(with, height, params) initialize Windows dimension 
+
+love.graphics.setDefaultFilter(min,mag)
+love.keypressed(key)
+love.event.quit()
+
+love.graphics.newFont(path, size)
+love.graphics.setFont(font)
+love.graphics.clear(rag, b,a)
+love.graphics.rectangle(mode, x, y, width, height)
+-> mode can be : fill, line
+love.graphics.setcolor()
+
+love.keyboard.isDown(key)  return true/false
+
+math.randomseed(num)
+os.time()
+math.random(min, max)
+
+love.window.setTitle(title)
+Love.timer.getFPS()
+
+love.audio.newSource(path,[type])	path -> audio file 
+					[type] -> 'static' / 'stream'
+soundsList['name']:play()
+
+User_define: love.resize(width, height) -> push.resize(width, height)
+
+love.graphics.newImage(path)   load image from a graphics file
+local Variables_name
+
+love.graphics.newQuad(x, y, width, height, dimensions)
+love.graphics.draw(texture, quad, x, y)
+partical system!! Check website
+
+love.filesystem.setIdentity(identity)
+love.filesystem.exists(path)
+love.filesystem.write(path, data)
+love.filesystem.lines(path)
+List file: 'name.lst'
+
+
+Timer
+
+Timer = require 'knife.timer'
+Timer.every(interval, callback)
+Timer.after(interval, callback)
+Timer.tween(duration, definition)
+
+
+Knife modules
+
+Knife.behavior(state machines)
+Knife.bind(bind arguments to functions)
+Knife.chain(flatten asynchronous code)
+Knife.convoke(flatten coroutine-based async code)
+Knife.event(dispatch and handle events)
+Knife.memoize(for memorization)
+Knife.serialize(stores data structures as strings)
+Knife.system(an entity-component system)
+Knife.test(testing framework)
+knife.timer(timers and tweens)
+
+透明化object
+love.graphics.setColor(255, 255, 255, object.opacity)
+
+love.graphics.translate(x,y)    shift everything by x, y

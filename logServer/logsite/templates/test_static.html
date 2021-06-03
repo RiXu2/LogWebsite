@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试静态文件</title>
+</head>
+<body>
+<img src="http://127.0.0.1:8000/static/image/pinkcloud.JPG" width = "200px" height = "150px">
+<img scr="/static/image/pinkcloud.JPG" width = "200px" height = "150px">
+{% load static %}
+<img src="{% static 'image/pinkcloud.JPG' %}" width = "200px" height = "150px">
+</body>
+</html>
