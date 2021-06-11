@@ -78,9 +78,9 @@ def test_upload(request):
         return HttpResponseRedirect('/all_content')
 
 
-root_dir = "/Users/liuxuri/Desktop/logServer/tempsavesite/tempsave/tempsave/tempUpload"
-move_dir = "/Users/liuxuri/Desktop/logServer/tempsavesite/tempsave/tempsave/tempUpload/"
-move_dest_dir = "/Users/liuxuri/Desktop/logServer/tempsavesite/tempsave/media/file/"
+root_dir = "/Users/liuxuri/Desktop/LogWebsite/logServer/tempsavesite/tempsave/tempsave/tempUpload"
+move_dir = "/Users/liuxuri/Desktop/LogWebsite/logServer/tempsavesite/tempsave/tempsave/tempUpload/"
+move_dest_dir = "/Users/liuxuri/Desktop/LogWebsite/logServer/tempsavesite/tempsave/media/file/"
 
 
 def upload_local():

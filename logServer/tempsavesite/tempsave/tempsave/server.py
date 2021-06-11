@@ -6,7 +6,7 @@ import json
 import os
 
 # 根据上传文件的路径进行改动 不是写死的
-share_dir = r'/Users/liuxuri/Desktop/logServer/tempsavesite/tempsave/tempsave/tempUpload'
+share_dir = r'/Users/liuxuri/Desktop/LogWebsite/logServer/tempsavesite/tempsave/tempsave/tempUpload'
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.bind(('127.0.0.1', 8917))  # 端口被占 就换别的

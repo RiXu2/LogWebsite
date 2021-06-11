@@ -3,7 +3,7 @@ import struct
 import json
 import os
 
-share_dir = r'/Users/liuxuri/Desktop/pythonTcpServer/TCPTestServer/TCPTestServer/onlyforUpload/client/share'
+share_dir = r'/Users/liuxuri/Desktop/LogWebsite/pythonTcpServer/TCPTestServer/TCPTestServer/onlyforUpload/client/share'
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1', 8917))
 
